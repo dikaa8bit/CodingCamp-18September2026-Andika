@@ -1,0 +1,388 @@
+:root {
+  --bg-color: #f0f4f8;
+  --card-bg: #ffffff;
+  --text-color: #2d3748;
+  --text-muted: #718096;
+  --accent-color: #4f6ef7;
+  --accent-soft: #ebefff;
+  --danger-color: #e53e3e;
+  --border-color: #e2e8f0;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.07), 0 2px 6px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+  --radius-card: 16px;
+  --radius-input: 10px;
+  --radius-btn: 10px;
+
+  /* Badge warna per kategori */
+  --badge-food-bg: #d1fae5;
+  --badge-food-text: #065f46;
+  --badge-transport-bg: #dbeafe;
+  --badge-transport-text: #1e40af;
+  --badge-fun-bg: #fde8d8;
+  --badge-fun-text: #9a3412;
+}
+
+body.dark-mode {
+  --bg-color: #0f172a;
+  --card-bg: #1e293b;
+  --text-color: #e2e8f0;
+  --text-muted: #94a3b8;
+  --accent-color: #7c8ef7;
+  --accent-soft: #1e2a4a;
+  --border-color: #334155;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+
+  --badge-food-bg: #064e3b;
+  --badge-food-text: #6ee7b7;
+  --badge-transport-bg: #1e3a5f;
+  --badge-transport-text: #93c5fd;
+  --badge-fun-bg: #431407;
+  --badge-fun-text: #fdba74;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 860px;
+  margin: 32px auto;
+  padding: 0 20px 40px;
+}
+
+/* ── HEADER ── */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--text-color);
+}
+
+/* ── TOMBOL DARK MODE – ikon bulat ── */
+#themeToggleBtn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1.5px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  flex-shrink: 0;
+  padding: 0;
+  color: var(--text-color);
+}
+
+#themeToggleBtn:hover {
+  background-color: var(--accent-soft);
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 4px rgba(79, 110, 247, 0.12);
+  transform: scale(1.08);
+}
+
+#themeToggleBtn svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+#themeToggleBtn:hover svg {
+  transform: rotate(20deg);
+}
+
+/* Sembunyikan teks fallback jika masih ada */
+#themeToggleBtn .btn-label {
+  display: none;
+}
+
+/* ── CARD ── */
+.card {
+  background-color: var(--card-bg);
+  padding: 24px;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 20px;
+  border: 1px solid var(--border-color);
+  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* ── SECTION TITLE dengan ikon ── */
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 18px;
+}
+
+.section-title .title-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background-color: var(--accent-soft);
+  color: var(--accent-color);
+  flex-shrink: 0;
+}
+
+.section-title .title-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ── BALANCE CARD ── */
+.balance-card {
+  text-align: center;
+  background: linear-gradient(135deg, var(--accent-color) 0%, #818cf8 100%);
+  border: none;
+  color: #fff;
+}
+
+.balance-card .section-title {
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.balance-card .section-title .title-icon {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.balance-amount {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -1px;
+}
+
+/* ── LAYOUT ── */
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 620px) {
+  .main-content {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── FORM ── */
+.form-group {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+input, select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-input);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+/* Dark mode: pastikan dropdown dan options terbaca */
+body.dark-mode select,
+body.dark-mode select option {
+  background-color: #1e293b;
+  color: #f8fafc;
+}
+
+input:focus, select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(79, 110, 247, 0.15);
+}
+
+button {
+  cursor: pointer;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 11px;
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-btn);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  transition: background-color 0.2s, box-shadow 0.2s, transform 0.15s;
+}
+
+.btn-primary:hover {
+  background-color: #3b5bdb;
+  box-shadow: 0 4px 14px rgba(79, 110, 247, 0.35);
+  transform: translateY(-1px);
+}
+
+/* ── LIST HEADER ── */
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.list-header .section-title {
+  margin-bottom: 0;
+}
+
+.list-header select {
+  width: auto;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  border-radius: 8px;
+}
+
+/* ── TRANSACTION LIST ── */
+.transaction-list {
+  list-style: none;
+  max-height: 380px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+
+.transaction-item {
+  padding: 12px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  gap: 10px;
+}
+
+.transaction-item:last-child {
+  border-bottom: none;
+}
+
+.transaction-item strong {
+  font-size: 0.95rem;
+  color: var(--text-color);
+}
+
+.transaction-item span {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* ── BADGE KATEGORI ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 9px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.badge-food {
+  background-color: var(--badge-food-bg);
+  color: var(--badge-food-text);
+}
+
+.badge-transport {
+  background-color: var(--badge-transport-bg);
+  color: var(--badge-transport-text);
+}
+
+.badge-fun {
+  background-color: var(--badge-fun-bg);
+  color: var(--badge-fun-text);
+}
+
+/* ── DELETE BUTTON ── */
+.delete-btn {
+  background-color: transparent;
+  color: var(--danger-color);
+  border: 1.5px solid var(--danger-color);
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  flex-shrink: 0;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.delete-btn:hover {
+  background-color: var(--danger-color);
+  color: #fff;
+}
+
+/* ── CHART ── */
+.chart-container {
+  position: relative;
+  height: 210px;
+}
+
+/* ── TRANSACTION ITEM sebagai card flat (bukan nested card) ── */
+.transaction-item.card {
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  border-bottom: none;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
